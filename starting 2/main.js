@@ -72,12 +72,12 @@ class Field {
                 playing: false;
                 break;
             }
-            else if (this.isHole()) {
+            else if (this.loss()) {
                 console.log('Fell in a hole!');
                 playing: false;
                 break;
             }
-            else if (this.isHat()) {
+            else if (this.win()) {
                 console.log('You found a hat!');
                 playing: false;
                 break;
