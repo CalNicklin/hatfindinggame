@@ -110,3 +110,6 @@ class Field {
         return field;
     }
 }
+
+const myField = new Field(Field.generateField(10, 10, 0.3));
+myField.runGame();
