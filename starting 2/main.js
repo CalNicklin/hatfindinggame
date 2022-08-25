@@ -88,6 +88,25 @@ class Field {
 
     // A method to generate a randomised field filled with holes, hats or background.
     static generateField(height, width, percentage) {
-        
+        const field = new Array(height).fill(0).map(el => new Array(width));
+        // for every item on the field array, populate the element with either a hole, character or hat.
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const prob = Math.random();
+                field[x][y] = prob > percentage ? fieldCharacter : hole;
+            }
+        }
+        // Set the intial hat location 
+        const hatLocation = {
+            x: Math.floor(Math.random() * width),
+            y: Math.floor(Math.random() * height)
+        }
+        // Make sure the "hat" is not at the starting point
+        while (hatLocation.x === 0 && hatLocation.y === 0) {
+            hatLocation.x = Math.floor(Math.random() * width);
+            hatLocation.y = Math.floor(Math.random() * height);
+        }
+        field[hatLocation.x][hatLocation.y] = hat;
+        return field;
     }
 }
